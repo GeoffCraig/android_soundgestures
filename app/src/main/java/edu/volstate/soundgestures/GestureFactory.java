@@ -17,6 +17,7 @@ public final class GestureFactory extends GestureDetector.SimpleOnGestureListene
     Context context;
     Activity activity;
     ImageView swiper;
+    AnimationFactory animaniacs;
     @Override
     public boolean onDown(MotionEvent event) {
         return true;
@@ -24,6 +25,7 @@ public final class GestureFactory extends GestureDetector.SimpleOnGestureListene
     public GestureFactory(Context context, Activity activity) {
         this.context = context;
         this.activity = activity;
+        animaniacs = new AnimationFactory(context, activity);
     }
 
     @Override
@@ -75,12 +77,14 @@ public final class GestureFactory extends GestureDetector.SimpleOnGestureListene
     private void onSwipeDown()
     {
         UIDrawer(R.drawable.ic_baseline_arrow_downward_24);
+        animaniacs.bounce(R.id.imgv_swipe, 2000);
         Toast.makeText(context, "You Swiped Down", Toast.LENGTH_SHORT).show();
     }
 
     private void onSwipeUp()
     {
         UIDrawer(R.drawable.ic_baseline_arrow_upward_24);
+        animaniacs.fadeInOut(R.id.imgv_swipe, 2000);
         Toast.makeText(context, "You Swiped Up", Toast.LENGTH_SHORT).show();
     }
 
@@ -88,5 +92,6 @@ public final class GestureFactory extends GestureDetector.SimpleOnGestureListene
         swiper = activity.findViewById(R.id.imgv_swipe);
         swiper.setImageResource(image);
         swiper.setVisibility(View.VISIBLE);
+
     }
 }
