@@ -18,6 +18,7 @@ public final class GestureFactory extends GestureDetector.SimpleOnGestureListene
     Activity activity;
     ImageView swiper;
     AnimationFactory animaniacs;
+    MediaPlayerFactory mediaPlayerFactory;
     @Override
     public boolean onDown(MotionEvent event) {
         return true;
@@ -65,12 +66,17 @@ public final class GestureFactory extends GestureDetector.SimpleOnGestureListene
     private void onSwipeRight()
     {
         UIDrawer(R.drawable.ic_baseline_arrow_right_alt_24);
+        MediaPlayerFactory mediaPlayerFactory = new MediaPlayerFactory(activity);
+        mediaPlayerFactory.playMedia(R.raw.dog_squeaky_toy_sound_effect);
+        animaniacs.flash(R.id.imgv_swipe, 2000);
         Toast.makeText(context, "You Swiped Right", Toast.LENGTH_SHORT).show();
     }
 
     private void onSwipeLeft()
     {
         UIDrawer(R.drawable.ic_baseline_keyboard_backspace_24);
+        MediaPlayerFactory mediaPlayerFactory = new MediaPlayerFactory(activity);
+        mediaPlayerFactory.playMedia(R.raw.small_plate_glass_pieces_being_dropped_on_concrete_floor);
         Toast.makeText(context, "You Swiped Left", Toast.LENGTH_SHORT).show();
     }
 
@@ -78,6 +84,8 @@ public final class GestureFactory extends GestureDetector.SimpleOnGestureListene
     {
         UIDrawer(R.drawable.ic_baseline_arrow_downward_24);
         animaniacs.bounce(R.id.imgv_swipe, 2000);
+        MediaPlayerFactory mediaPlayerFactory = new MediaPlayerFactory(activity);
+        mediaPlayerFactory.playMedia(R.raw.zapsplat_leisure_board_game_yahtzee_dice_x1_put_in_shaker);
         Toast.makeText(context, "You Swiped Down", Toast.LENGTH_SHORT).show();
     }
 
@@ -85,6 +93,8 @@ public final class GestureFactory extends GestureDetector.SimpleOnGestureListene
     {
         UIDrawer(R.drawable.ic_baseline_arrow_upward_24);
         animaniacs.fadeInOut(R.id.imgv_swipe, 2000);
+        MediaPlayerFactory mediaPlayerFactory = new MediaPlayerFactory(activity);
+        mediaPlayerFactory.playMedia(R.raw.sad_trombone);
         Toast.makeText(context, "You Swiped Up", Toast.LENGTH_SHORT).show();
     }
 

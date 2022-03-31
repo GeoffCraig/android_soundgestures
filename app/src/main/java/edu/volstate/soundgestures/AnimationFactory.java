@@ -9,6 +9,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+
 public class AnimationFactory implements Animation.AnimationListener {
     Context context;
     Activity activity;
@@ -48,5 +50,12 @@ public class AnimationFactory implements Animation.AnimationListener {
         animBounce.setDuration(duration);
         ImageView imgView = activity.findViewById(imageView);
         imgView.startAnimation(animBounce);
+    }
+
+    public void flash(int imageView, int duration) {
+        Animation animFlash = AnimationUtils.loadAnimation(context, R.anim.flash);
+        animFlash.setDuration(duration);
+        ImageView imgView = activity.findViewById(imageView);
+        imgView.startAnimation(animFlash);
     }
 }
